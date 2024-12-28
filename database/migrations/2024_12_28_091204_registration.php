@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('registration', function (Blueprint $table) {
             $table->id(); 
-            $table->foreignId('users_id')->constrained();
-            $table->foreignId('competiton_id')->constrained();
-            $table->enum('status', ['en_attente', 'accepté', 'rejeté'])->default('pending');
+            $table->foreignId('users_id')->constrained('users');
+            $table->foreignId('competition_id')->constrained('competition');
+            $table->enum('status', ['en_attente', 'accepté', 'rejeté'])->default('en_attente');
             $table->integer('score')->default(0);
             
             $table->timestamp('registration_date')->nullable();

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('competition', function (Blueprint $table) {
             $table->id(); 
-            $table->foreignId('game_id')->constrained();
+            $table->foreignId('game_id')->constrained('game');
             $table->string('title');
             $table->dateTime('start_date');
             $table->dateTime('end_date');
