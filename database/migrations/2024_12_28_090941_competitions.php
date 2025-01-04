@@ -6,19 +6,17 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
+   
     public function up(): void
     {
-        Schema::create('game', function (Blueprint $table) {
+        Schema::create('competitions', function (Blueprint $table) {
             $table->id(); 
-            $table->string('name'); 
-            $table->text('description');
-            $table->text('rules');
+            $table->foreignId('games_id')->constrained('games');
+            $table->string('title');
+            $table->dateTime('start_date');
+            $table->dateTime('end_date');
             $table->timestamps();
         });
-        
     }
 
     /**

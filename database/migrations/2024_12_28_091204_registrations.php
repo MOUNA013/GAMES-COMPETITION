@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('registration', function (Blueprint $table) {
+        Schema::create('registrations', function (Blueprint $table) {
             $table->id(); 
             $table->foreignId('users_id')->constrained('users');
-            $table->foreignId('competition_id')->constrained('competition');
+            $table->foreignId('competitions_id')->constrained('competitions');
             $table->enum('status', ['en_attente', 'accepté', 'rejeté'])->default('en_attente');
             $table->integer('score')->default(0);
             
