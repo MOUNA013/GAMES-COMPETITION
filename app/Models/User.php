@@ -45,7 +45,11 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-    public function competition(){
-        return $this->belongsToMany(Competition::class, 'registrations');
+    public function competitions()
+    {
+        return $this->belongsToMany(Competition::class, 'registration')
+                    ->withPivot('status', 'score', 'registration_date')
+                    ->withTimestamps();
     }
+
 }

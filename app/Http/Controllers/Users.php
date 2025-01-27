@@ -23,18 +23,22 @@ class Users extends Controller
     }
 
     
+  
     public function store(Request $request)
     {
-        $data = $request->validate([
+        $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:8',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|string|min:6|confirmed',
         ]);
 
-        $data['password'] = Hash::make($data['password']); 
+        $user = User::create([
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'password' => bcrypt($validated['password']),
+        ]);
 
-        $user = User::create($data); 
-        return response()->json($user, 201);
+        return response()->json(['message' => 'Inscription réussie!', 'user' => $user], 201);
     }
 
     

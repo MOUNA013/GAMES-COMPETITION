@@ -13,7 +13,7 @@ class Competitions extends Controller
         $competitions = Competition::all(); 
         return response()->json($competitions);
     }
-
+   
     
     public function show($id)
     {

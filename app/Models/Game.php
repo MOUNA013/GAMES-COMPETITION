@@ -2,16 +2,28 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Game extends Model
 {
+    use HasFactory; 
+
     protected $fillable = [
         'name',
         'description',
         'rules',
     ];
-    public function competition(){
+  
+
+
+
+    protected $table = 'game'; 
+
+
+
+    public function competition()
+    {
         return $this->hasMany(Competition::class);
     }
 }
