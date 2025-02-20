@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ChatController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,6 +18,7 @@ Route::get('/users', [Users::class, 'index']);
 Route::get('/users/{id}', [Users::class, 'show']);
 Route::post('/users', [Users::class, 'store']);
 Route::get('/games', [Games::class, 'index']);
+Route::post('/games', [Games::class, 'store']);
 Route::get('/games/{id}', [Games::class, 'show']);
 Route::get('/competitions', [Competitions::class, 'index']);
 Route::get('/competitions/{id}', [Competitions::class, 'show']);

@@ -11,15 +11,16 @@ return new class extends Migration
      */
     public function up()
 {
-    Schema::table('games', function (Blueprint $table) { // Assurez-vous que le nom est correct
-        $table->string('video_url')->nullable();
+    Schema::table('games', function (Blueprint $table) {
+        $table->string('image')->nullable()->after('name'); // Ajoute une colonne image
     });
 }
 
 public function down()
 {
-    Schema::table('game', function (Blueprint $table) {
-        $table->dropColumn('video_url');
+    Schema::table('games', function (Blueprint $table) {
+        $table->dropColumn('image'); // Pour rollback la migration
     });
 }
+
 };

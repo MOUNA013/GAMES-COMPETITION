@@ -18,7 +18,7 @@ class Game extends Model
 
 
 
-    protected $table = 'game'; 
+    protected $table = 'games'; 
 
 
 
@@ -26,4 +26,10 @@ class Game extends Model
     {
         return $this->hasMany(Competition::class);
     }
+    // Dans le modèle Game
+    public function participants()
+    {
+        return $this->hasMany(CompetitionParticipant::class);
+    }
+
 }

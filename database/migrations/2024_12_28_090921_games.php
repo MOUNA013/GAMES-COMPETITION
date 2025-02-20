@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('competition', function (Blueprint $table) {
+        Schema::create('games', function (Blueprint $table) {
             $table->id(); 
-            $table->foreignId('game_id')->constrained('game');
-            $table->string('title');
-            $table->dateTime('start_date');
-            $table->dateTime('end_date');
+            $table->string('name'); 
+            $table->text('description');
+            $table->text('rules');
             $table->timestamps();
         });
+        
     }
 
     /**

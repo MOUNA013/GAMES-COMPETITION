@@ -47,7 +47,7 @@ class User extends Authenticatable
     }
     public function competitions()
     {
-        return $this->belongsToMany(Competition::class, 'registration')
+        return $this->belongsToMany(Competition::class, 'registrations')
                     ->withPivot('status', 'score', 'registration_date')
                     ->withTimestamps();
     }

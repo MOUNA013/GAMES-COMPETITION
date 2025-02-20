@@ -12,8 +12,8 @@ class CompetitionSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('competition')->insert([
-            'game_id' => 1, 
+        DB::table('competitions')->insert([
+            'games_id' => 1, 
             'title' => 'Championship 2025',
             'start_date' => Carbon::now()->addDays(2), 
             'end_date' => Carbon::now()->addDays(5), 

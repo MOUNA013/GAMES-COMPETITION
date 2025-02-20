@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Competition extends Model
 {
@@ -17,7 +16,7 @@ class Competition extends Model
         'end_date',
         'game_id', 
     ];
-    protected $table = 'competition';
+    protected $table = 'competitions';
 
         public function game(): BelongsTo
     {
@@ -27,7 +26,7 @@ class Competition extends Model
    
     public function users()
     {
-        return $this->belongsToMany(User::class, 'registration')
+        return $this->belongsToMany(User::class, 'registrations')
                     ->withPivot('status', 'score', 'registration_date')
                     ->withTimestamps();
     }

@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('registration', function (Blueprint $table) {
-            $table->id(); 
-            $table->foreignId('users_id')->constrained('users');
-            $table->foreignId('competition_id')->constrained('competition');
+        Schema::create('registrations', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')->constrained('users'); // Correction
+            $table->foreignId('competition_id')->constrained('competitions'); // Correction
+            $table->enum('status', ['en_attente', 'accepté', 'rejeté'])->default('en_attente');
             $table->integer('score')->default(0);
-            
             $table->timestamp('registration_date')->nullable();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
-    }
+        Schema::dropIfExists('registrations'); 
+}
 };
